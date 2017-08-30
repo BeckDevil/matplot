@@ -21,21 +21,23 @@ import matplotlib.path as path
 
 with open('deg_dist.txt') as file:
     scalnode = np.array([[float(digit) for digit in line.split()] for line in file])
-print scalnode
+#print scalnode
 
-MIN, MAX = 0.1, 10**19
+plt.figure(figsize = (8,6), dpi = 100)
+plt.subplot(111)
 
 # histogram our data with numpy
 data = scalnode[:, 0]
 bins = 10 ** np.linspace(0, 19, 20)
-print bins
+#print bins
 
 plt.hist(data, bins = bins)
 
 plt.xscale('log')
 plt.xlim(bins[0]/10, bins[19]*10)
 plt.xlabel('Cardinality of cluster')
-#plt.xticks(np.logspace(1, 10**19, 20))
+
+
 plt.ylim(0, 1000000)
 plt.ylabel('Frequency')
 
