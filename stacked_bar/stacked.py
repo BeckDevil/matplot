@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+plt.figure(figsize = (6,3), dpi = 144)
 with open('stages.dat') as file:
     stages = np.array([[float(digit) for digit in line.split()] for line in file])
 print stages
@@ -15,11 +15,20 @@ width = 0.35       # the width of the bars: can also be len(x) sequence
 p1 = plt.bar(ind+0.35, stage1, width, color='r')
 p2 = plt.bar(ind+0.35, stage2, width, bottom=stage1, color = 'b' )
 
-plt.ylabel('Scores')
-plt.title('Portions of time spent on different section')
-plt.xticks(ind, ('QG1', 'QG2', 'QG3', 'QG4', 'QG5'))
-plt.ylim(0.8, 1)
-plt.yticks(np.arange(0.8, 1, 0.02))
-plt.legend((p1[0], p2[0]), ('LWEI creation', 'Embedding enumeration'), loc = 'lower right')
+plt.ylabel('Percentage (%)')
+plt.title('Percentages of time spent on different section')
+plt.xticks(ind+0.35, ('WG', 'YT', 'WT', 'LJ', 'OK', 'FR'))
 
+plt.ylim(80, 100)
+plt.yticks(np.arange(80, 101, 2))
+
+ax = plt.gca()     
+yticks = ax.yaxis.get_major_ticks()
+#for i in range(2,9):
+#    yticks[i].label1.set_visible(False)
+#yticks[-1].label1.set_visible(False)
+
+plt.legend((p1[0], p2[0]), ('CECI creation', 'Embedding enumeration'), loc = 'lower right')
+
+plt.savefig('stages.pdf', dpi = 144)
 plt.show()

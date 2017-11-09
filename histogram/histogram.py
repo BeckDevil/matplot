@@ -23,25 +23,26 @@ with open('deg_dist.txt') as file:
     scalnode = np.array([[float(digit) for digit in line.split()] for line in file])
 #print scalnode
 
-plt.figure(figsize = (8,6), dpi = 100)
+plt.figure(figsize = (12, 6), dpi = 100)
 plt.subplot(111)
-
+plt.tick_params(axis='both', which='major', labelsize=16)
+plt.tick_params(axis='both', which='minor', labelsize=16)
 # histogram our data with numpy
 data = scalnode[:, 0]
 bins = 10 ** np.linspace(0, 19, 20)
 #print bins
 
-plt.hist(data, bins = bins)
+plt.hist(data, bins = bins, normed = False, alpha = 1.0)
 
 plt.xscale('log')
 plt.xlim(bins[0]/10, bins[19]*10)
-plt.xlabel('Cardinality of cluster')
+plt.xlabel('Workload', fontsize = 24)
 
-
-plt.ylim(0, 1000000)
-plt.ylabel('Frequency')
+plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+#plt.ylim(0, 1000000)
+plt.ylabel('Frequency', fontsize = 24)
 
 plt.title('Frequency Distribution of cardinality on each cluster');
 
-plt.savefig('card_dist.pdf', dpi = 144)
+plt.savefig('imbalance.pdf', dpi = 100)
 plt.show()

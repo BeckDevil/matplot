@@ -9,24 +9,24 @@ labels = ['YT', 'WG', 'WT', 'LJ', 'OK', 'DB']
 legends = ['QG1', 'QG2', 'QG3', 'QG4','QG5']
 
 plt.figure(figsize = (12, 4), dpi = 100)
-#plt.tick_params(axis='both', which='major', labelsize=8)
-#plt.tick_params(axis='both', which='minor', labelsize=6)
+plt.tick_params(axis='both', which='major', labelsize=12)
+plt.tick_params(axis='both', which='minor', labelsize=10)
 plt.ylabel('speedup with nte-index')
 
 for i in range (0,5):
     plt.subplot(1,5, i+1)
     if (i == 0):
-        plt.ylabel('speedup with nte-index')
-    plt.tick_params(axis='both', which='major', labelsize=8)
-    plt.tick_params(axis='both', which='minor', labelsize=6)
+        plt.ylabel('speedup with nte-index', fontsize = 12)
+    plt.tick_params(axis='both', which='major', labelsize=10)
+    plt.tick_params(axis='both', which='minor', labelsize=8)
     y_pos = np.arange(len(labels))
     data = nte_eff[i, :]
-    plt.bar(y_pos, data, align = 'center', alpha = 0.5)
+    plt.bar(y_pos, data,color = 'k', align = 'center', alpha = 0.5)
     plt.xticks(y_pos, labels)
     plt.ylim(0, 3)
     plt.title(legends[i])
 
-plt.savefig('nte_effect.pdf', dpi = 100)
+plt.savefig('resnteindex.pdf', dpi = 100)
 plt.show()
 
 
