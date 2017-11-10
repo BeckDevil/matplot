@@ -12,23 +12,23 @@ N = stages.shape[0]
 ind = np.arange(N)    # the x locations for the groups
 width = 0.35       # the width of the bars: can also be len(x) sequence
 
-p1 = plt.bar(ind+0.35, stage1, width, color='r')
-p2 = plt.bar(ind+0.35, stage2, width, bottom=stage1, color = 'b' )
+p1 = plt.bar(ind+0.35, stage1, width, color='gray')
+p2 = plt.bar(ind+0.35, stage2, width, bottom=stage1, color = 'gainsboro' )
 
 plt.ylabel('Percentage (%)')
-plt.title('Percentages of time spent on different section')
+#plt.title('Percentages of time spent on different section')
 plt.xticks(ind+0.35, ('WG', 'YT', 'WT', 'LJ', 'OK', 'FR'))
 
-plt.ylim(80, 100)
-plt.yticks(np.arange(80, 101, 2))
+plt.ylim(0, 100)
+plt.yticks(np.arange(0, 101, 20))
 
-ax = plt.gca()     
+ax = plt.gca()
 yticks = ax.yaxis.get_major_ticks()
 #for i in range(2,9):
 #    yticks[i].label1.set_visible(False)
 #yticks[-1].label1.set_visible(False)
 
-plt.legend((p1[0], p2[0]), ('CECI creation', 'Embedding enumeration'), loc = 'lower right')
+plt.legend(( p2[0], p1[0]), ('CECI creation','Embedding enumeration'), loc = 'upper right')
 
 plt.savefig('stages.pdf', dpi = 144)
 plt.show()
