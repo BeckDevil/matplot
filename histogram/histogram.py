@@ -25,24 +25,25 @@ with open('deg_dist.txt') as file:
 
 plt.figure(figsize = (12, 6), dpi = 100)
 plt.subplot(111)
-plt.tick_params(axis='both', which='major', labelsize=16)
-plt.tick_params(axis='both', which='minor', labelsize=16)
+plt.tick_params(axis='both', which='major', labelsize=20)
+plt.tick_params(axis='both', which='minor', labelsize=20)
 # histogram our data with numpy
 data = scalnode[:, 0]
 bins = 10 ** np.linspace(0, 19, 20)
 #print bins
-
 plt.hist(data, bins = bins, normed = False, alpha = 1.0)
 
 plt.xscale('log')
 plt.xlim(bins[0]/10, bins[19]*10)
-plt.xlabel('Workload', fontsize = 24)
+plt.xlabel('Workload', fontsize = 20)
+plt.xlim(0.1, 10e17)
 
-plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-#plt.ylim(0, 1000000)
-plt.ylabel('Frequency', fontsize = 24)
+#plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+plt.ylim(0, 700000)
+plt.ylabel('#Embedding clusters', fontsize = 20)
+plt.tight_layout()
 
-plt.title('Frequency Distribution of cardinality on each cluster');
+#plt.title('Frequency Distribution of cardinality on each cluster');
 
 plt.savefig('imbalance.pdf', dpi = 100)
 plt.show()
