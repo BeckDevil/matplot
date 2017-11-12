@@ -23,20 +23,22 @@ with open('deg_dist.txt') as file:
     scalnode = np.array([[float(digit) for digit in line.split()] for line in file])
 #print scalnode
 
-plt.figure(figsize = (12, 6), dpi = 100)
+plt.figure(figsize = (12, 5), dpi = 100)
 plt.subplot(111)
 plt.tick_params(axis='both', which='major', labelsize=20)
 plt.tick_params(axis='both', which='minor', labelsize=20)
 # histogram our data with numpy
 data = scalnode[:, 0]
-bins = 10 ** np.linspace(0, 19, 20)
+stop=17
+num=20
+bins = 10 ** np.linspace(0, stop, num)
 #print bins
 plt.hist(data, bins = bins, normed = False, alpha = 1.0)
 
 plt.xscale('log')
-plt.xlim(bins[0]/10, bins[19]*10)
+plt.xlim(bins[0]/num, bins[stop]*num)
 plt.xlabel('Workload', fontsize = 20)
-plt.xlim(0.1, 10e17)
+#plt.xlim(0.1, 10e17)
 
 #plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 plt.ylim(0, 700000)

@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-plt.figure(figsize = (6,3), dpi = 144)
+plt.figure(figsize = (6,2), dpi = 144)
 with open('stages.dat') as file:
     stages = np.array([[float(digit) for digit in line.split()] for line in file])
 print stages
-
+plt.gcf().subplots_adjust(bottom=0.15)
+plt.rcParams.update({'font.size': 16})
 stage1 = stages[:, 0]
 stage2 = stages[:, 1]
 
@@ -20,7 +21,7 @@ plt.ylabel('Percentage (%)')
 plt.xticks(ind+0.5, ('WG', 'YT', 'WT', 'LJ', 'OK', 'FR'))
 
 plt.ylim(0, 100)
-plt.yticks(np.arange(0, 101, 25))
+plt.yticks(np.arange(0, 101, 20))
 
 ax = plt.gca()
 yticks = ax.yaxis.get_major_ticks()
