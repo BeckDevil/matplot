@@ -17,10 +17,10 @@ p2 = plt.bar(ind+0.35, stage2, width, bottom=stage1, color = 'gainsboro' )
 
 plt.ylabel('Percentage (%)')
 #plt.title('Percentages of time spent on different section')
-plt.xticks(ind+0.35, ('WG', 'YT', 'WT', 'LJ', 'OK', 'FR'))
+plt.xticks(ind+0.5, ('WG', 'YT', 'WT', 'LJ', 'OK', 'FR'))
 
 plt.ylim(0, 100)
-plt.yticks(np.arange(0, 101, 20))
+plt.yticks(np.arange(0, 101, 25))
 
 ax = plt.gca()
 yticks = ax.yaxis.get_major_ticks()
@@ -28,7 +28,7 @@ yticks = ax.yaxis.get_major_ticks()
 #    yticks[i].label1.set_visible(False)
 #yticks[-1].label1.set_visible(False)
 
-plt.legend(( p2[0], p1[0]), ('CECI creation','Embedding enumeration'), loc = 'upper right')
+plt.legend(( p2[0], p1[0]), ('CECI creation','Circle completion'), loc = 'upper right')
 
 plt.savefig('stages.pdf', dpi = 144)
 plt.show()
